@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    function applystyles(styles,text){
+        let stylestr = styles.map(s => `${s.name}:${s.value}`).join("; ");
+
+        document.write(`<p style="${stylestr}">${text}</p>`);
+    }
+    applystyles([
+            { name: "color", value: "brown" },
+            { name: "font-size", value: "10px" },
+            { name: "background", value: "yellow" }
+        ],
+        "Hello world")
+
+    function subs(text){
+        let temp="";
+        for (let i of text) {
+            if(i>="A" && i<="Z"){
+                temp += i.toLowerCase();
+            }
+            else if (i>="a" && i<="z"){
+                temp+=i.toUpperCase();
+            }
+            else {
+                temp+="_";
+            }
+        }
+        return temp;
+    }
+    let test="Ab0"
+    alert(subs(test));
+
+    function cc(style){
+        let result="";
+        for(let i in style){
+            if(style[i-1]==="-"){
+                result+=style[i].toUpperCase();
+            }
+            else if(i===1){
+                result+=style[i].toLowerCase();
+            }
+            else if(style[i]!=="-"){
+                result += style[i];
+            }
+        }
+        return result;
+    }
+
+    alert(cc("font-size"));
+    alert(cc("border-top-left"));
+
+
+    function abbreviate(text){
+        let result="";
+        for(let i in text){
+            if (i==='0'){
+                result+=text[i].toUpperCase();
+            }
+            else if(text[i-1]===" " || text[i-1]==="-"){
+                result+=text[i].toUpperCase();
+            }
+        }
+        return result;
+    }
+    alert(abbreviate("cascading style sheets"));
+    alert(abbreviate("объектно-ориентированное программирование"));
+
+    function url(url) {
+        const parsed = new URL(url);
+
+        return `протокол: ${parsed.protocol.replace(':','')},
+        \nдомен: ${parsed.host},
+        \nпуть: ${parsed.pathname}`;
+    }
+
+    alert(url("https://itstep.org/ua/about"))
+
+    function print(temp, ...args) {
+        let result = "";
+
+        for (let i = 0; i < temp.length; i++) {
+            if (temp[i] === "%") {
+                let index = Number(temp[i + 1]);
+                result += args[index - 1];
+                i++;
+            } else {
+                result += temp[i];
+            }
+        }
+
+        return result;
+    }
+    alert(print("Today is %1 %2.%3.%4", "Monday", 10, 8, 2020))
+
+</script>
+</body>
+</html>
