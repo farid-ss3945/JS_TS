@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CornHub - Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: #000;
+            padding: 15px 0;
+            border-bottom: 3px solid #ffa500;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #ffa500;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #fff;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffa500;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23f4a460" width="1200" height="800"/></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .auth-container {
+            background-color: #2a2a2a;
+            border: 3px solid #ffa500;
+            border-radius: 15px;
+            padding: 40px;
+            max-width: 450px;
+            width: 100%;
+            box-shadow: 0 10px 40px rgba(255, 165, 0, 0.3);
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .auth-header h1 {
+            font-size: 36px;
+            color: #ffa500;
+            margin-bottom: 10px;
+        }
+
+        .auth-header p {
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #ffa500;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: #1a1a1a;
+            border: 2px solid #444;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #ffa500;
+        }
+
+        .form-group input::placeholder {
+            color: #666;
+        }
+
+        .error-message {
+            color: #ff4444;
+            font-size: 13px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .success-message {
+            color: #44ff44;
+            font-size: 13px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: #ffa500;
+            border: none;
+            border-radius: 8px;
+            color: #000;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background-color: #ff8c00;
+            transform: translateY(-2px);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid #444;
+        }
+
+        .form-footer a {
+            color: #ffa500;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .toggle-form {
+            display: none;
+        }
+
+        .toggle-form.active {
+            display: block;
+        }
+
+        .password-strength {
+            height: 5px;
+            background-color: #333;
+            border-radius: 3px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+
+        .password-strength-bar {
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s, background-color 0.3s;
+        }
+
+        .password-strength-text {
+            font-size: 12px;
+            margin-top: 5px;
+            color: #aaa;
+        }
+
+        footer {
+            background-color: #000;
+            padding: 20px;
+            text-align: center;
+            border-top: 3px solid #ffa500;
+        }
+
+        footer p {
+            color: #888;
+            font-size: 14px;
+        }
+
+        .corn-icon {
+            font-size: 60px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="header-content">
+        <a href="index.html" class="logo">
+            Corn<span>Hub</span>
+        </a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="varieties.html">Varieties</a>
+            <a href="recipes.html">Recipes</a>
+            <a href="farming.html">Farming</a>
+            <a href="about.html">About</a>
+        </nav>
+    </div>
+</header>
+
+<div class="main-content">
+    <div class="auth-container">
+        <div class="corn-icon">🌽</div>
+
+        <!-- LOGIN FORM -->
+        <div id="loginForm" class="toggle-form active">
+            <div class="auth-header">
+                <h1>Welcome Back!</h1>
+                <p>Login to access your corn collection</p>
+            </div>
+
+            <form id="loginFormElement">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" placeholder="your@email.com" required>
+                    <span class="error-message" id="loginEmailError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                    <span class="error-message" id="loginPasswordError"></span>
+                </div>
+
+                <button type="submit" class="submit-btn">Login</button>
+
+                <div class="form-footer">
+                    <p>Don't have an account? <a href="#" id="showRegister">Register here</a></p>
+                </div>
+            </form>
+        </div>
+
+        <div id="registerForm" class="toggle-form">
+            <div class="auth-header">
+                <h1>Join CornHub</h1>
+                <p>Create an account to start your corn journey</p>
+            </div>
+
+            <form id="registerFormElement">
+                <div class="form-group">
+                    <label for="registerUsername">Username</label>
+                    <input type="text" id="registerUsername" placeholder="Choose a username" required>
+                    <span class="error-message" id="registerUsernameError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" placeholder="your@email.com" required>
+                    <span class="error-message" id="registerEmailError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="registerPassword">Password</label>
+                    <input type="password" id="registerPassword" placeholder="Create a strong password" required>
+                    <div class="password-strength">
+                        <div class="password-strength-bar" id="passwordStrengthBar"></div>
+                    </div>
+                    <p class="password-strength-text" id="passwordStrengthText"></p>
+                    <span class="error-message" id="registerPasswordError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="registerConfirmPassword">Confirm Password</label>
+                    <input type="password" id="registerConfirmPassword" placeholder="Confirm your password" required>
+                    <span class="error-message" id="registerConfirmPasswordError"></span>
+                </div>
+
+                <button type="submit" class="submit-btn">Register</button>
+
+                <div class="form-footer">
+                    <p>Already have an account? <a href="#" id="showLogin">Login here</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 CornHub. All rights reserved. For educational purposes about corn.</p>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', initAuth);
+
+    function initAuth() {
+        document.getElementById('showRegister')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleForms('register');
+        });
+
+        document.getElementById('showLogin')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            toggleForms('login');
+        });
+
+
+        document.getElementById('loginFormElement')?.addEventListener('submit', handleLogin);
+        document.getElementById('registerFormElement')?.addEventListener('submit', handleRegister);
+
+        document.getElementById('registerPassword')?.addEventListener('input', checkPasswordStrength);
+
+        const user = getCurrentUser();
+        if (user && window.location.pathname.includes('log.html')) {
+            if (confirm(`Already logged in as ${user.username}. Go home?`)) {
+                window.location.href = 'index.html';
+            }
+        }
+    }
+
+    function toggleForms(show) {
+        document.getElementById('loginForm').classList.toggle('active', show === 'login');
+        document.getElementById('registerForm').classList.toggle('active', show === 'register');
+    }
+
+    function handleLogin(e) {
+        e.preventDefault();
+        const email = document.getElementById('loginEmail').value.trim();
+        const password = document.getElementById('loginPassword').value;
+
+        clearErrors('login');
+
+        if (!validateEmail(email)) return showError('loginEmailError', 'Invalid email');
+        if (password.length < 6) return showError('loginPasswordError', 'Password too short');
+
+        const users = JSON.parse(localStorage.getItem('cornhub_users')) || [];
+        const user = users.find(u => u.email === email);
+
+        if (!user) return showError('loginEmailError', 'Account not found');
+        if (user.password !== password) return showError('loginPasswordError', 'Wrong password');
+
+        localStorage.setItem('cornhub_current_user', JSON.stringify({
+            username: user.username,
+            email: user.email,
+            loginTime: new Date().toISOString()
+        }));
+
+        alert(`Welcome back, ${user.username}! 🌽`);
+        setTimeout(() => window.location.href = 'index.html', 1000);
+    }
+
+    function handleRegister(e) {
+        e.preventDefault();
+        const username = document.getElementById('registerUsername').value.trim();
+        const email = document.getElementById('registerEmail').value.trim();
+        const password = document.getElementById('registerPassword').value;
+        const confirm = document.getElementById('registerConfirmPassword').value;
+
+        clearErrors('register');
+
+        if (username.length < 3) return showError('registerUsernameError', 'Username too short');
+        if (!validateEmail(email)) return showError('registerEmailError', 'Invalid email');
+        if (password.length < 6) return showError('registerPasswordError', 'Password too short');
+        if (password !== confirm) return showError('registerConfirmPasswordError', 'Passwords don\'t match');
+
+        const users = JSON.parse(localStorage.getItem('cornhub_users')) || [];
+
+        if (users.some(u => u.email === email)) return showError('registerEmailError', 'Email already exists');
+        if (users.some(u => u.username === username)) return showError('registerUsernameError', 'Username taken');
+
+        const newUser = { username, email, password, createdAt: new Date().toISOString() };
+        users.push(newUser);
+        localStorage.setItem('cornhub_users', JSON.stringify(users));
+        localStorage.setItem('cornhub_current_user', JSON.stringify({
+            username, email, loginTime: new Date().toISOString()
+        }));
+
+        alert(`Welcome to CornHub, ${username}! 🌽`);
+        setTimeout(() => window.location.href = 'index.html', 1000);
+    }
+
+    function checkPasswordStrength() {
+        const password = document.getElementById('registerPassword').value;
+        const bar = document.getElementById('passwordStrengthBar');
+        const text = document.getElementById('passwordStrengthText');
+
+        if (!password) {
+            bar.style.width = '0%';
+            text.textContent = '';
+            return;
+        }
+
+        let strength = 0;
+        if (password.length >= 6) strength += 25;
+        if (password.length >= 10) strength += 25;
+        if (/[a-z]/.test(password) && /[A-Z]/.test(password)) strength += 25;
+        if (/[0-9]/.test(password)) strength += 12.5;
+        if (/[^a-zA-Z0-9]/.test(password)) strength += 12.5;
+
+        const levels = [[25, 'Weak', '#f44'], [50, 'Fair', '#fa4'], [75, 'Good', '#4af'], [100, 'Strong', '#4f4']];
+        const [, label, color] = levels.find(([s]) => strength <= s) || levels[3];
+
+        bar.style.width = strength + '%';
+        bar.style.backgroundColor = color;
+        text.textContent = `Password: ${label}`;
+        text.style.color = color;
+    }
+
+    function validateEmail(email) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    function showError(id, msg) {
+        const el = document.getElementById(id);
+        if (el) { el.textContent = msg; el.style.display = 'block'; }
+    }
+
+    function clearErrors(type) {
+        document.querySelectorAll(`#${type}Form .error-message`).forEach(el => {
+            el.style.display = 'none';
+            el.textContent = '';
+        });
+    }
+
+    function getCurrentUser() {
+        const user = localStorage.getItem('cornhub_current_user');
+        return user ? JSON.parse(user) : null;
+    }
+
+    function logout() {
+        localStorage.removeItem('cornhub_current_user');
+        alert('Logged out! 🌽');
+        window.location.href = 'log.html';
+    }
+
+    function addUserGreeting() {
+        const user = getCurrentUser();
+        const nav = document.querySelector('nav');
+        if (!nav) return;
+
+        const greeting = document.createElement('div');
+        greeting.style.cssText = 'color: #ffa500; font-weight: bold;';
+
+        if (user) {
+            greeting.innerHTML = `Welcome, ${user.username}! <a href="#" onclick="logout()" style="color: #fff; margin-left: 10px;">Logout</a>`;
+        } else {
+            greeting.innerHTML = `<a href="log.html" style="color: #ffa500;">Login</a>`;
+        }
+
+        nav.appendChild(greeting);
+    }
+
+    window.CornAuth = { logout, getCurrentUser, addUserGreeting };
+</script>
+</body>
+</html>
