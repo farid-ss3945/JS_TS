@@ -1,0 +1,332 @@
+body{
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.top_panel{
+    width: 100%;
+    height: 100px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    background-color: rgb(0, 4, 79);
+}
+.top_panel img{
+    padding-left: 20px;
+    padding-top: 10px;
+}
+
+
+
+.top_panel nav .home{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    position: absolute;
+    font-size: 30px;
+    left: 120px;
+    top: 30px;
+    text-decoration: none;
+    color: white;
+}
+.top_panel nav .trophy_cabinet{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    position: absolute;
+    font-size: 30px;
+    left: 230px;
+    top: 30px;
+    text-decoration: none;
+    color: white;
+}
+.top_panel nav .shop{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    position: absolute;
+    font-size: 30px;
+    left: 460px;
+    top: 30px;
+    text-decoration: none;
+    color: white;
+}
+.top_panel nav .mascot{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    position: absolute;
+    font-size: 30px;
+    left: 570px;
+    top: 30px;
+    text-decoration: none;
+    color: white;
+}
+.top_panel nav .login{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    position: absolute;
+    font-size: 30px;
+    right: 170px;
+    top: 30px;
+    text-decoration: none;
+    color: white;
+}
+
+.rj{
+    position: absolute;
+    left: 5px;
+    top: 150px;
+    width: 700px;
+    height: 300px;
+    box-shadow: 0px 0px 3px;
+}
+.rj img{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+.rj p{
+    position: absolute;
+    top: 70px;
+    left: 270px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+}
+.rj a{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+    position: absolute;
+    top: 15px;
+    left: 270px;
+}
+.rj .buy{
+    position: absolute;
+    top: 160px;
+    left: 270px;
+    width: 150px;
+    height: 50px;
+}
+.rj .buy b{
+    font-size: 16px;
+}
+
+.sj{
+    position: absolute;
+    left: 5px;
+    top: 500px;
+    width: 700px;
+    height: 300px;
+    box-shadow: 0px 0px 3px;
+}
+.sj img{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+.sj p{
+    position: absolute;
+    top: 70px;
+    left: 270px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+}
+.sj a{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+    position: absolute;
+    top: 15px;
+    left: 270px;
+}
+.sj .buy{
+    position: absolute;
+    top: 160px;
+    left: 270px;
+    width: 150px;
+    height: 50px;
+}
+.sj .buy b{
+    font-size: 16px;
+}
+
+.third{
+    position: absolute;
+    left: 5px;
+    top: 850px;
+    bottom: 30px;
+    width: 700px;
+    height: 300px;
+    box-shadow: 0px 0px 3px;
+}
+.third img{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+.third p{
+    position: absolute;
+    top: 70px;
+    left: 270px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+}
+.third a{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+    position: absolute;
+    top: 15px;
+    left: 270px;
+}
+.third .buy{
+    position: absolute;
+    top: 160px;
+    left: 270px;
+    width: 150px;
+    height: 50px;
+}
+.third .buy b{
+    font-size: 16px;
+}
+
+.hj{
+    position: absolute;
+    left: 800px;
+    top: 150px;
+    width: 700px;
+    height: 300px;
+    box-shadow: 0px 0px 3px;
+}
+.hj img{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+.hj p{
+    position: absolute;
+    top: 70px;
+    left: 270px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+}
+.hj a{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+    position: absolute;
+    top: 15px;
+    left: 270px;
+}
+.hj .buy{
+    position: absolute;
+    top: 160px;
+    left: 270px;
+    width: 150px;
+    height: 50px;
+}
+.hj .buy b{
+    font-size: 16px;
+}
+
+.captain{
+    position: absolute;
+    left: 800px;
+    top: 500px;
+    width: 700px;
+    height: 300px;
+    box-shadow: 0px 0px 3px;
+}
+.captain img{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+.captain p{
+    position: absolute;
+    top: 70px;
+    left: 270px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+}
+.captain a{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+    position: absolute;
+    top: 15px;
+    left: 270px;
+}
+.captain .buy{
+    position: absolute;
+    top: 160px;
+    left: 270px;
+    width: 150px;
+    height: 50px;
+}
+.captain .buy b{
+    font-size: 16px;
+}
+.scarf{
+    position: absolute;
+    left: 800px;
+    top: 850px;
+    bottom: 30px;
+    width: 700px;
+    height: 300px;
+    box-shadow: 0px 0px 3px;
+}
+.scarf img{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+.scarf p{
+    position: absolute;
+    top: 70px;
+    left: 270px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+}
+.scarf a{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+    position: absolute;
+    top: 15px;
+    left: 270px;
+}
+.scarf .buy{
+    position: absolute;
+    top: 160px;
+    left: 270px;
+    width: 150px;
+    height: 50px;
+}
+.scarf .buy b{
+    font-size: 16px;
+}
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 999;
+}
+
+.basket {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    width: 300px;
+    max-height: 80vh;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+    border-radius: 10px;
+}
+
+.basket button {
+    float: right;
+    cursor: pointer;
+}
+
+
+#basket{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: red;
+    color: white;
+    margin-top: 105px;
+    height: 30px;
+    width: 55px;
+    margin-left: 5px;
+}
