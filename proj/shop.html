@@ -100,10 +100,6 @@
             return JSON.parse(localStorage.getItem('baskets')) || {};
         }
 
-        function saveBaskets(baskets) {
-            localStorage.setItem('baskets', JSON.stringify(baskets));
-        }
-
         function addToBasket(text) {
             const user = getCurrentUser();
             if (!user) {
@@ -169,4 +165,5 @@
 
     </script>
 </body>
+
 </html>
