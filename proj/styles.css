@@ -1,0 +1,276 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #004d98 0%, #a50044 100%);
+    font-family: 'Arial', sans-serif;
+    min-height: 100vh;
+    color: #333;
+}
+
+.top_panel {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    padding: 15px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.top_panel img {
+    transition: transform 0.3s ease;
+}
+
+.top_panel img:hover {
+    transform: scale(1.1);
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    background: rgba(165, 0, 68, 0.6);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(165, 0, 68, 0.4);
+}
+
+#basket {
+    position: fixed;
+    top: 120px;
+    right: 40px;
+    background: #ffd700;
+    color: #000;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    z-index: 999;
+    text-transform: uppercase;
+}
+
+#basket:hover {
+    background: #ffed4e;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+}
+
+.basket {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+    width: 90%;
+    max-width: 500px;
+    max-height: 80vh;
+    overflow-y: auto;
+    display: none;
+}
+
+.basket h3 {
+    color: #004d98;
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#basketItems {
+    margin-top: 20px;
+    color: #333;
+}
+
+#basketItems p {
+    background: rgba(0, 77, 152, 0.1);
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border-left: 4px solid #004d98;
+}
+
+#closeBasket {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #dc3545;
+    color: white;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#closeBasket:hover {
+    background: #c82333;
+    transform: scale(1.1);
+}
+
+#clear {
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+}
+
+#clear:hover {
+    background: #ff5252;
+    transform: translateY(-2px);
+}
+
+.rj, .sj, .third, .hj, .captain, .scarf {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 25px;
+    margin: 30px;
+    display: inline-block;
+    vertical-align: top;
+    width: calc(33.333% - 60px);
+    min-width: 280px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    border: 2px solid rgba(0, 77, 152, 0.2);
+    text-align: center;
+}
+
+.rj:hover, .sj:hover, .third:hover, .hj:hover, .captain:hover, .scarf:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    border-color: #ffd700;
+}
+
+.rj img, .sj img, .third img, .hj img, .captain img, .scarf img {
+    width: 100%;
+    max-width: 250px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease;
+}
+
+.rj:hover img, .sj:hover img, .third:hover img, .hj:hover img, .captain:hover img, .scarf:hover img {
+    transform: scale(1.05);
+}
+
+.rj a, .sj a, .third a, .hj a, .captain a, .scarf a {
+    display: block;
+    color: #004d98;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 15px 0;
+    min-height: 50px;
+}
+
+.rj p, .sj p, .third p, .hj p, .captain p, .scarf p {
+    color: #a50044;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.buy {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.buy:hover {
+    background: #c82333;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(220, 53, 69, 0.4);
+}
+
+@media (max-width: 1200px) {
+    .rj, .sj, .third, .hj, .captain, .scarf {
+        width: calc(50% - 60px);
+    }
+}
+
+@media (max-width: 768px) {
+    .top_panel {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    nav a {
+        text-align: center;
+    }
+
+    #basket {
+        top: 80px;
+        right: 20px;
+        padding: 12px 25px;
+        font-size: 16px;
+    }
+
+    .rj, .sj, .third, .hj, .captain, .scarf {
+        width: calc(100% - 40px);
+        margin: 20px;
+    }
+
+    .basket {
+        width: 95%;
+        padding: 20px;
+    }
+}

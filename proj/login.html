@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="stylel.css">
+</head>
+<body style="background-color: rgb(0, 0, 149);">
+    <div class="top_panel">
+        <a href="main.html"><img src="FC_Barcelona_(crest).svg.png" alt="error" height="80px" width="80px"></a>
+        <nav>
+            <a href="main.html" class="home">home</a>
+            <a href="trophycabinet.html" class="trophy_cabinet">trophy cabinet</a>
+            <a href="shop.html" class="shop">shop</a>
+            <a href="mascot.html" class="mascot">mascot</a>
+            <a href="login.html" class="login">login</a>
+        </nav>
+    </div>
+    <div class="reg">
+        <h2 style="color: white">Create Account</h2>
+        <div class="input-group">
+            <input type="text" id="regUsername" placeholder="Username">
+        </div>
+        <br>
+        <div class="input-group">
+            <input type="email" id="regEmail" placeholder="Email">
+        </div>
+        <br>
+        <div class="input-group">
+            <input type="password" id="regPassword" placeholder="Password">
+        </div>
+        <br>
+        <button style="background-color: darkblue;color: white;border-radius: 10px" id="register">Register</button>
+        <button style="background-color: darkblue;color: white;border-radius: 10px" onclick="log_show()">Login Here</button>
+    </div>
+
+    <div class="log">
+        <h2 style="color: white">Welcome Back</h2>
+        <div class="input-group">
+            <input type="email" id="loginEmail" placeholder="Email">
+        </div>
+        <br>
+        <div class="input-group">
+            <input type="password" id="loginPassword" placeholder="Password">
+        </div>
+        <br>
+        <button style="background-color: darkblue;color: white;border-radius: 10px" id="sign">Login</button>
+        <button style="background-color: darkblue;color: white;border-radius: 10px" onclick="reg_show()">Register Here</button>
+    </div>
+
+    <script>
+        function reg_show() {
+            let a=document.getElementsByClassName('log')[0];
+            a.style.display="none";
+            document.getElementsByClassName('reg')[0].style.display="block";
+            document.getElementById("regUsername").value = "";
+            document.getElementById("regEmail").value = "";
+            document.getElementById("regPassword").value = "";
+        }
+
+        function log_show() {
+            let a=document.getElementsByClassName('log')[0];
+            a.style.display="block";
+            document.getElementsByClassName('reg')[0].style.display="none";
+            document.getElementById("loginEmail").value = "";
+            document.getElementById("loginPassword").value = "";
+        }
+
+
+
+
+        document.getElementById('register').addEventListener('click', () => {
+            let username = document.getElementById('regUsername').value.trim();
+            let password = document.getElementById('regPassword').value.trim();
+            let mail=document.getElementById('regEmail').value.trim();
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+
+            if (!username || !password || !mail) {
+                alert('Fill all fields');
+                return;
+            }
+
+            if (users.find(u => u.mail === mail)) {
+                alert('User exists');
+                return;
+            }
+
+            users.push({ username, password, mail });
+            localStorage.setItem('users', JSON.stringify(users));
+
+
+            alert('Registered!');
+            log_show();
+        });
+
+        document.getElementById('sign').addEventListener('click', () => {
+            const username = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value.trim();
+
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+
+            const user = users.find(
+                u => u.mail === username && u.password === password
+            );
+
+            if (!user) {
+                alert('Wrong credentials');
+                return;
+            }
+
+            alert('Logged in!');
+            localStorage.setItem('currentUser', user.mail);
+            reg_show()
+        });
+
+    </script>
+</body>
+</html>

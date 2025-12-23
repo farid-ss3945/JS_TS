@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body style="background-color: white">
+    <div class="top_panel">
+        <a href="main.html"><img src="FC_Barcelona_(crest).svg.png" alt="error" height="80px" width="80px"></a>
+        <nav>
+            <a href="main.html" class="home">home</a>
+            <a href="trophycabinet.html" class="trophy_cabinet">trophy cabinet</a>
+            <a href="shop.html" class="shop">shop</a>
+            <a href="mascot.html" class="mascot">mascot</a>
+            <a href="login.html" class="login">login</a>
+        </nav>
+
+    </div>
+    <button id="basket">basket</button>
+    <div id="overlay" class="overlay" style="display:none;"></div>
+
+    <div id="basketBox" class="basket">
+        <button id="clear">Clear</button>
+        <button id="closeBasket">✖</button>
+        <h3>Your basket</h3>
+        <div id="basketItems"></div>
+    </div>
+    <div class="rj" style="background-color: rgb(232, 232, 232);">
+        <img src="BLMP000740008-1.webp" alt="error" width="250px" height="300px">
+        <a>FC Barcelona retro jacket</a>
+        <p>₼ 206.00 AZN</p>
+        <button style="background-color: red;color: white;" class="buy"><b>add to basket</b></button>
+    </div>
+    <div class="sj" style="background-color: rgb(232, 232, 232);">
+        <img src="BLMP0007401720_6_7870b33a-306c-4fe3-81f5-32adf92a77b9.webp" alt="error" width="250px" height="300px">
+        <a>1995-97's Season Jersey</a>
+        <p>₼ 152.00 AZN</p>
+        <button style="background-color: red;color: white;" class="buy"><b>add to basket</b></button>
+    </div>
+    <div class="third" style="background-color: rgb(232, 232, 232);">
+        <img src="253100MC_1.webp" alt="error" width="250px" height="300px">
+        <a>UCL Junior third jersey 24/25 FC Barcelona - Player's Edition</a>
+        <p>₼ 314.00 AZN</p>
+        <button style="background-color: red;color: white;" class="buy"><b>add to basket</b></button>
+    </div>
+    <div class="hj" style="background-color: rgb(232, 232, 232);;">
+        <img src="25100BMC_1.webp" alt="error" width="250px" height="300px">
+        <a>UCL Men's home jersey 24/25 FC Barcelona</a>
+        <p>₼ 249.00 AZN</p>
+        <button style="background-color: red;color: white;" class="buy"><b>add to basket</b></button>
+    </div>
+    <div class="captain" style="background-color: rgb(232, 232, 232);">
+        <img src="700x1060-BLMP0007401705-7_cbfe0a5e-95bd-4da3-ab94-31cfb8ceb6e7.webp" alt="error" width="250px" height="300px">
+        <a>FC Barcelona Captain Jersey</a>
+        <p>₼ 152.00 AZN</p>
+        <button style="background-color: red;color: white;" class="buy"><b>add to basket</b></button>
+    </div>
+    <div class="scarf" style="background-color: rgb(232, 232, 232);">
+        <img src="download.jpg" alt="error" width="250px" height="300px">
+        <a>Doble Barça Scarf</a>
+        <p>₼ 44.00 AZN</p>
+        <button style="background-color: red;color: white;" class="buy"><b>add to basket</b></button>
+    </div>
+
+    <script>
+        document.getElementById('basket').addEventListener('click', () => {
+            renderBasket();
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('basketBox').style.display = 'block';
+        });
+
+        document.getElementById('closeBasket').addEventListener('click', closeBasket);
+        document.getElementById('overlay').addEventListener('click', closeBasket);
+
+        document.getElementById('clear').addEventListener('click', function (){
+            const baskets = getBaskets();
+            const user = getCurrentUser();
+
+            if (!user) return;
+
+            baskets[user] = [];
+            localStorage.setItem('baskets', JSON.stringify(baskets));
+
+            renderBasket();
+        });
+
+        function closeBasket() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('basketBox').style.display = 'none';
+        }
+
+
+        function getCurrentUser() {
+            return localStorage.getItem('currentUser');
+        }
+
+        function getBaskets() {
+            return JSON.parse(localStorage.getItem('baskets')) || {};
+        }
+
+        function saveBaskets(baskets) {
+            localStorage.setItem('baskets', JSON.stringify(baskets));
+        }
+
+        function addToBasket(text) {
+            const user = getCurrentUser();
+            if (!user) {
+                alert('Please log in');
+                return;
+            }
+
+            const baskets = getBaskets();
+
+            if (!baskets[user]) {
+                baskets[user] = [];
+            }
+
+            baskets[user].push(text);
+
+            localStorage.setItem('baskets', JSON.stringify(baskets));
+            renderBasket();
+        }
+
+        const buyButtons = document.getElementsByClassName('buy');
+
+        for (let i = 0; i < buyButtons.length; i++) {
+            buyButtons[i].addEventListener('click', function (){
+                const productName = this.parentElement.querySelector('a').textContent;
+                addToBasket(productName);
+            });
+        }
+
+        document.getElementById('basket').addEventListener('click', function (){
+            const user = getCurrentUser();
+
+            if (!user) {
+                alert('Please login');
+                return;
+            }
+
+            renderBasket();
+            document.getElementById('basketBox').style.display = 'block';
+        });
+
+        function renderBasket() {
+            const baskets = getBaskets();
+            const user = getCurrentUser();
+            const items = baskets[user] || [];
+
+            const box = document.getElementById('basketItems');
+            box.innerHTML = '';
+
+            if (items.length === 0) {
+                box.textContent = 'Basket is empty';
+                return;
+            }
+
+            items.forEach(text => {
+                const p = document.createElement('p');
+                p.textContent = text+ `-${Date(Date.now())}`;
+                box.appendChild(p);
+            });
+        }
+
+
+
+
+    </script>
+</body>
+</html>

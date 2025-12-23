@@ -1,0 +1,155 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #004d98 0%, #a50044 100%);
+    font-family: 'Arial', sans-serif;
+    min-height: 100vh;
+    color: #fff;
+}
+
+.top_panel {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    padding: 15px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.top_panel img {
+    transition: transform 0.3s ease;
+}
+
+.top_panel img:hover {
+    transform: scale(1.1);
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    background: rgba(165, 0, 68, 0.6);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(165, 0, 68, 0.4);
+}
+
+.best {
+    text-align: center;
+    padding: 60px 20px;
+    font-size: 56px;
+    font-weight: bold;
+    color: #ffd700;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+}
+
+.trophies {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+}
+
+.UCL, .FCWC, .LaLiga, .Copa, .ESuperCup, .SSuperCup {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 35px;
+    transition: all 0.4s ease;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+}
+
+.UCL:hover, .FCWC:hover, .LaLiga:hover, .Copa:hover, .ESuperCup:hover, .SSuperCup:hover {
+    transform: translateY(-15px) scale(1.03);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 215, 0, 0.3);
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #ffd700;
+}
+
+.UCL img, .FCWC img, .LaLiga img, .Copa img, .ESuperCup img, .SSuperCup img {
+    width: 160px;
+    height: 200px;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.4));
+}
+
+.UCL a, .FCWC a, .LaLiga a, .Copa a, .ESuperCup a, .SSuperCup a {
+    color: #ffd700;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: default;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    letter-spacing: 0.5px;
+}
+
+.UCL p, .FCWC p, .LaLiga p, .Copa p, .ESuperCup p, .SSuperCup p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .top_panel {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    nav a {
+        text-align: center;
+    }
+
+    .best {
+        font-size: 36px;
+        padding: 40px 20px;
+    }
+
+    .trophies {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 20px;
+    }
+
+    .UCL a, .FCWC a, .LaLiga a, .Copa a, .ESuperCup a, .SSuperCup a {
+        font-size: 20px;
+    }
+
+    .UCL p, .FCWC p, .LaLiga p, .Copa p, .ESuperCup p, .SSuperCup p {
+        font-size: 14px;
+    }
+}

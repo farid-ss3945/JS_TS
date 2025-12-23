@@ -1,0 +1,136 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+    font-family: 'Arial', sans-serif;
+    min-height: 100vh;
+    color: #333;
+}
+
+.top_panel {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    padding: 15px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.top_panel img {
+    transition: transform 0.3s ease;
+}
+
+.top_panel img:hover {
+    transform: scale(1.1);
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px 20px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    background: rgba(165, 0, 68, 0.6);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(165, 0, 68, 0.4);
+}
+
+.welcome {
+    text-align: center;
+    padding: 60px 20px;
+    font-size: 56px;
+    font-weight: bold;
+    color: #004d98;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.cat {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    border: 2px solid rgba(0, 77, 152, 0.2);
+}
+
+.cat p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 30px;
+    text-align: justify;
+}
+
+.cat img {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    border-radius: 15px;
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.cat img:hover {
+    transform: scale(1.02);
+}
+
+@media (max-width: 768px) {
+    .top_panel {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    nav a {
+        text-align: center;
+    }
+
+    .welcome {
+        font-size: 36px;
+        padding: 40px 20px;
+    }
+
+    .cat {
+        padding: 25px 15px;
+        margin: 20px;
+    }
+
+    .cat p {
+        font-size: 16px;
+        text-align: left;
+    }
+
+    .cat img {
+        max-width: 100%;
+    }
+}
