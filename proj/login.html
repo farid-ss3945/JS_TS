@@ -81,6 +81,11 @@
                 return;
             }
 
+            if (username.length < 4 || password.length < 8) {
+                alert('Invalid username or password');
+                return;
+            }
+
             if (users.find(u => u.mail === mail)) {
                 alert('User exists');
                 return;
@@ -116,4 +121,5 @@
 
     </script>
 </body>
+
 </html>
